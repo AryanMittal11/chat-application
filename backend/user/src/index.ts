@@ -2,10 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
 import { createClient } from "redis";
+import userRoutes from "./routes/user.js"
+import { connectRabbitMQ } from "./config/rabbitmq.js";
 
 dotenv.config();
 
 connectDb();
+
+connectRabbitMQ();
 
 export let redisClient: any = null;
 
@@ -27,6 +31,10 @@ if (process.env.DISABLE_REDIS === "true") {
 }
 
 const app = express();
+
+app.use(express.json())
+
+app.use("/api/v1", userRoutes);
 
 const port = process.env.PORT;
 
