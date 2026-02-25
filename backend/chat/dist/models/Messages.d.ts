@@ -7,7 +7,7 @@ export interface IMessage extends Document {
         url: string;
         publicId: string;
     };
-    messageTypes: "text" | "image";
+    messageType: "text" | "image";
     seen: boolean;
     seenAt?: Date;
     createdAt: Date;

@@ -14,7 +14,7 @@ const schema = new Schema({
         url: String,
         publicId: String,
     },
-    messageTypes: {
+    messageType: {
         type: String,
         enum: ["text", "image"],
         default: "text",

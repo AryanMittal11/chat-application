@@ -8,7 +8,7 @@ export interface IMessage extends Document{
         url: string;
         publicId: string;
     };
-    messageTypes: "text" | "image";
+    messageType: "text" | "image";
     seen: boolean;
     seenAt?: Date;
     createdAt: Date;
@@ -31,7 +31,7 @@ const schema = new Schema<IMessage> (
             url: String,
             publicId: String,
         },
-        messageTypes: {
+        messageType: {
             type: String,
             enum: ["text", "image"],
             default: "text",
